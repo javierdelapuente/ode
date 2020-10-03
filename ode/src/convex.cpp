@@ -47,6 +47,8 @@ By Rodrigo Hernandez
 
 //****************************************************************************
 // Convex public API
+dReal dxConvex::margin = static_cast<dReal>(0.0);
+
 dxConvex::dxConvex (dSpaceID space,
                     const dReal *_planes,
                     unsigned int _planecount,
@@ -118,6 +120,12 @@ void dxConvex::computeAABB()
         aabb[4] = dMIN(aabb[4],point[2]+final_posr->pos[2]);
         aabb[5] = dMAX(aabb[5],point[2]+final_posr->pos[2]);
     }
+    aabb[0] -= margin;
+    aabb[1] += margin;
+    aabb[2] -= margin;
+    aabb[3] += margin;
+    aabb[4] -= margin;
+    aabb[5] += margin;
 }
 
 /*! \brief Populates the edges set, should be called only once whenever the polygon array gets updated */

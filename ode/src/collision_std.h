@@ -139,7 +139,8 @@ struct dxRay : public dxGeom {
 };
 
 struct dxConvex : public dxGeom 
-{  
+{
+  static dReal margin;
     const dReal *planes; /*!< An array of planes in the form:
                    normal X, normal Y, normal Z,Distance
                    */
